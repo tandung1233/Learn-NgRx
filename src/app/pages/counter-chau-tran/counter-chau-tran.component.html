@@ -1,1 +1,7 @@
-<p>counter-chau-tran works!</p>
+<div class="p-10">
+  <button class="p-2 bg-red-200" (click)="decrement()">-</button>
+  Count: {{value$ | async}}
+  <button class="p-2 bg-red-200" (click)="increment()">+</button>
+  <p>You have pressed Increment button {{incrementCount$ | async}} times</p>
+  <p>You have pressed Decrement button {{decrementCount$ | async}} times</p>
+</div>
