@@ -12,6 +12,13 @@ import { countReducer } from './pages/counter-chau-tran/store/counter.reducer';
 import { CounterStackblitzComponent } from './pages/counter-stackblitz/counter-stackblitz.component';
 import { counterReducer } from './pages/counter-stackblitz/counter.reducers';
 import { TutorialTrangNgrxComponent } from './pages/tutorial-trang-ngrx/tutorial-trang-ngrx.component';
+import { BookCollectionComponent } from './pages/managebook-of-ngrx/book-collection/book-collection.component';
+import { BookListComponent } from './pages/managebook-of-ngrx/book-list/book-list.component';
+import { booksReducer } from './pages/managebook-of-ngrx/state/books.reducer';
+import { collectionReducer } from './pages/managebook-of-ngrx/state/collection.reducer';
+import { ManagebookOfNgrxComponent } from './pages/managebook-of-ngrx/managebook-of-ngrx.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,18 +28,24 @@ import { TutorialTrangNgrxComponent } from './pages/tutorial-trang-ngrx/tutorial
     CounterChauTranComponent,
     CounterStackblitzComponent,
     TutorialTrangNgrxComponent,
+    BookCollectionComponent,
+    BookListComponent,
+    ManagebookOfNgrxComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
     // Bước 3: phải làm
     // Dòng lệnh StoreModule.forRoot({}, {}) trong trường hợp của bạn đăng ký store chính và có thể được sử dụng để cấu hình reducer và các tùy chọn khác cho store chính trong NGRX.
-    StoreModule.forRoot({}, {}),
+    //  books: booksReducer, collection: collectionReducer: Hỏi chat GPT bảo là bỏ ở đây(kiểu là nó thêm 2 cái state cho mình) và khi chạy devtool ở mục chart sẽ thấy điều kỳ diệu hơn rảnh thì tìm hiểu 
+    StoreModule.forRoot({ books: booksReducer, collection: collectionReducer }, {}),
     // Để kích hoạt Redux DevTools trong ứng dụng Angular cần có dòng dưới này
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreModule.forFeature('counter', countReducer),
-    // Chưa hiểu vì sao có cái này mới chạy được
     StoreModule.forFeature('count', counterReducer),
+    // Rảnh tìm hiểu cái storemodule này 
   ],
   providers: [],
   bootstrap: [AppComponent],
