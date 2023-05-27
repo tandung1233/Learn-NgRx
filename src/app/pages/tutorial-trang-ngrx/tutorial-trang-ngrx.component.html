@@ -1,0 +1,5 @@
+<!-- Bước 5: Viết code html để hiển thị ui  -->
+<div>Current Count: {{ count$ | async }}</div>
+<button id="increment" (click)="increment()" class="bg-red-500 p-2">Increment</button>
+<button id="decrement" (click)="decrement()" class="bg-red-500 p-2 ml-1">Decrement</button>
+<button id="reset" (click)="reset()" class="bg-blue-500 p-2 ml-1">Reset Counter</button>

@@ -11,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { countReducer } from './pages/counter-chau-tran/store/counter.reducer';
 import { CounterStackblitzComponent } from './pages/counter-stackblitz/counter-stackblitz.component';
 import { counterReducer } from './pages/counter-stackblitz/counter.reducers';
+import { TutorialTrangNgrxComponent } from './pages/tutorial-trang-ngrx/tutorial-trang-ngrx.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +20,12 @@ import { counterReducer } from './pages/counter-stackblitz/counter.reducers';
     HomeComponent,
     CounterChauTranComponent,
     CounterStackblitzComponent,
+    TutorialTrangNgrxComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    // Bước 3: phải làm
     // Dòng lệnh StoreModule.forRoot({}, {}) trong trường hợp của bạn đăng ký store chính và có thể được sử dụng để cấu hình reducer và các tùy chọn khác cho store chính trong NGRX.
     StoreModule.forRoot({}, {}),
     // Để kích hoạt Redux DevTools trong ứng dụng Angular cần có dòng dưới này
