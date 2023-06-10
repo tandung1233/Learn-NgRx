@@ -43,6 +43,7 @@ import { FormsModule } from '@angular/forms';
     StoreModule.forRoot({ books: booksReducer, collection: collectionReducer }, {}),
     // Để kích hoạt Redux DevTools trong ứng dụng Angular cần có dòng dưới này
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    // Sử dụng selector để truy xuất dữ liệu từ feature "counter" trong store. Khi các action thì countReducer sẽ hoạt động để xử lý các state
     StoreModule.forFeature('counter', countReducer),
     StoreModule.forFeature('count', counterReducer),
     // Rảnh tìm hiểu cái storemodule này 
