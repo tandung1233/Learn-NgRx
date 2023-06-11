@@ -19,7 +19,15 @@ import { collectionReducer } from './pages/managebook-of-ngrx/state/collection.r
 import { ManagebookOfNgrxComponent } from './pages/managebook-of-ngrx/managebook-of-ngrx.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import { ShopCartComponent } from './pages/shop-store-example/shop-cart/shop-cart.component';
+import { ShopProductsComponent } from './pages/shop-store-example/shop-products/shop-products.component';
+import {
+  cartReducer,
+  metaReducerLocalStorage,
+} from './pages/shop-store-example/cart-state-store/cart.reducer';
+import { CommonModule } from '@angular/common';
+import { Header2Component } from './pages/shop-store-example/header2/header2.component';
+import { AppShopStoreComponent } from './pages/shop-store-example/app-shop-store/app-shop-store.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,22 +39,30 @@ import { FormsModule } from '@angular/forms';
     BookCollectionComponent,
     BookListComponent,
     ManagebookOfNgrxComponent,
+    ShopCartComponent,
+    ShopProductsComponent,
+    Header2Component,
+    AppShopStoreComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     // Bước 3: phải làm
     // Dòng lệnh StoreModule.forRoot({}, {}) trong trường hợp của bạn đăng ký store chính và có thể được sử dụng để cấu hình reducer và các tùy chọn khác cho store chính trong NGRX.
-    //  books: booksReducer, collection: collectionReducer: Hỏi chat GPT bảo là bỏ ở đây(kiểu là nó thêm 2 cái state cho mình) và khi chạy devtool ở mục chart sẽ thấy điều kỳ diệu hơn rảnh thì tìm hiểu 
-    StoreModule.forRoot({ books: booksReducer, collection: collectionReducer }, {}),
+    //  books: booksReducer, collection: collectionReducer: Hỏi chat GPT bảo là bỏ ở đây(kiểu là nó thêm 2 cái state cho mình) và khi chạy devtool ở mục chart sẽ thấy điều kỳ diệu hơn rảnh thì tìm hiểu
+    StoreModule.forRoot( //forRoot này chỉ có 1 cái thôi nên là cứ bỏ vào đây cái cái state
+      { books: booksReducer, collection: collectionReducer, cartEntries: cartReducer}, // Bước 4: Đặt cartEntries: cartReducer để sử dụng được Reducer
+      {metaReducers: [ metaReducerLocalStorage ]}
+    ),
     // Để kích hoạt Redux DevTools trong ứng dụng Angular cần có dòng dưới này
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     // Sử dụng selector để truy xuất dữ liệu từ feature "counter" trong store. Khi các action thì countReducer sẽ hoạt động để xử lý các state
     StoreModule.forFeature('counter', countReducer),
     StoreModule.forFeature('count', counterReducer),
-    // Rảnh tìm hiểu cái storemodule này 
+    // Rảnh tìm hiểu cái storemodule này
   ],
   providers: [],
   bootstrap: [AppComponent],

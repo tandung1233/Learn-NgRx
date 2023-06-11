@@ -5,6 +5,7 @@ import { CounterChauTranComponent } from './pages/counter-chau-tran/counter-chau
 import { CounterStackblitzComponent } from './pages/counter-stackblitz/counter-stackblitz.component';
 import { TutorialTrangNgrxComponent } from './pages/tutorial-trang-ngrx/tutorial-trang-ngrx.component';
 import { ManagebookOfNgrxComponent } from './pages/managebook-of-ngrx/managebook-of-ngrx.component';
+import { AppShopStoreComponent } from './pages/shop-store-example/app-shop-store/app-shop-store.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,7 +13,7 @@ const routes: Routes = [
   { path: 'counter-stackblitz', component: CounterStackblitzComponent },
   { path: 'tutorial-trang-ngrx', component: TutorialTrangNgrxComponent },
   { path: 'manageBook-of-ngrx', component: ManagebookOfNgrxComponent },
-  // { path: 'nztable', component: NzTabelComponent },
+  { path: 'store-example', component: AppShopStoreComponent },
 ];
 
 @NgModule({
